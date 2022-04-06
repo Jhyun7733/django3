@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block con %}
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+    <div class="container mt-5 mb-5">
+        <h1><b> 토픽 생성</b></h1>
+
+        <input type="text" name = "sub" placeholder="TOPIC을 입력하세요" class="form-control mt-5">
+        <textarea class="form-control mt-3" name="con" style="height : 150px;" placeholder="TOPIC을 입력하세요"></textarea>
+    
+        <div class="text-end mt-4">
+            <button type="button" class="btn btn-secondary" onclick="makesel()">보기추가</button>
+            <button class="btn btn-dark">토픽생성</button>
+        </div>
+
+        <div class="row" id="here">
+            <div class="col-lg-6 mt-5">
+                <input type="text" class="form-control" name="sname" placeholder="보기 이름을 입력하세요">
+                <input type="file" class="form-control mt-3 mb-3" name="spic">
+                <textarea class="form-control" name="scon" style="height: 100px;" placeholder=" 보기 입력! "></textarea>
+            </div>
+        </div>
+    </form>
+    
+    </div>
+
+    <script>
+        function makesel(){
+            d = document.getElementById("here");
+            t = document.createElement("div");
+            t.setAttribute("class", "col-lg-4 mt-5")
+            t.innerHTML = '<input type="text" name="sname" class="form-control " placeholder="보기 이름을 입력하세요">\
+                <input type="file" name="spic" class="form-control mt-3 mb-3" >\
+                <textarea class="form-control" name="scon" style="height: 100px;" placeholder=" 보기 설명! "></textarea>';
+            d.appendChild(t);
+        }
+    </script>
+
+
+{% endblock %}
